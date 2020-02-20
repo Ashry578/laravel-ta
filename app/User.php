@@ -28,11 +28,19 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
+
+    public function getUrlAttribute()
+    {
+        // return route("questions.show", $this->id);
+        return '#';
+    }
+
+    
+
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
